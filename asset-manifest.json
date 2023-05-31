@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/akal/static/js/main.87266684.js",
+    "main.js": "/akal/static/js/main.331cf48d.js",
     "static/js/496.c8bc0447.chunk.js": "/akal/static/js/496.c8bc0447.chunk.js",
     "index.html": "/akal/index.html",
-    "main.87266684.js.map": "/akal/static/js/main.87266684.js.map",
+    "main.331cf48d.js.map": "/akal/static/js/main.331cf48d.js.map",
     "496.c8bc0447.chunk.js.map": "/akal/static/js/496.c8bc0447.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.87266684.js"
+    "static/js/main.331cf48d.js"
   ]
 }
