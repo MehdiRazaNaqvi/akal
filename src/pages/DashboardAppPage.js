@@ -3,6 +3,10 @@ import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import PaymentIcon from '@mui/icons-material/Payment';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 // components
 import Iconify from '../components/iconify';
 // sections
@@ -17,6 +21,8 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
+import { FederalUsers, TotalFederalSalary, minimumFederalSalary, averageFederalSalary, highestFederalSalary } from '../_mock/user';
+
 
 // ----------------------------------------------------------------------
 
@@ -30,13 +36,16 @@ export default function DashboardAppPage() {
       </Helmet>
 
       <Container maxWidth="xl">
+
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
+
+
+          {/* <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Weekly Sales" total={714000} icon={<PaymentsIcon/>} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -49,9 +58,25 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
+          </Grid> */}
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Total Salary" total={TotalFederalSalary} color="info" icon={<AccountBalanceWalletIcon />} />
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Highest Salary" total={highestFederalSalary} color="success" icon={<PaymentIcon />} />
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Minimum Salary" total={minimumFederalSalary} color="primary" icon={<TimelineIcon />} />
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Average Salary" total={averageFederalSalary} color="warning" icon={<PaymentsIcon />} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
+
             <AppWebsiteVisits
               title="Website Visits"
               subheader="(+43%) than last year"
@@ -89,6 +114,7 @@ export default function DashboardAppPage() {
                 },
               ]}
             />
+
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
@@ -148,7 +174,7 @@ export default function DashboardAppPage() {
                 id: faker.datatype.uuid(),
                 title: faker.name.jobTitle(),
                 description: faker.name.jobTitle(),
-                image: `/assets/images/covers/cover_${index + 1}.jpg`,
+                image: `/akal/assets/images/covers/cover_${index + 1}.jpg`,
                 postedAt: faker.date.recent(),
               }))}
             />
@@ -208,11 +234,16 @@ export default function DashboardAppPage() {
                 { id: '2', label: 'Add SCSS and JS files if required' },
                 { id: '3', label: 'Stakeholder Meeting' },
                 { id: '4', label: 'Scoping & Estimations' },
-                { id: '5', label: 'Sprint Showcase' },
+                { id: '5', label: 'Sprint Design' },
+                { id: '6', label: 'Sprint Showcase' },
               ]}
             />
           </Grid>
+
+
         </Grid>
+
+
       </Container>
     </>
   );

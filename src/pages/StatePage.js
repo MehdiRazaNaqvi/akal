@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
-
 import { sentenceCase } from 'change-case';
 import { useState } from 'react';
 // @mui
@@ -29,7 +28,6 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { AppWidgetSummary } from '../sections/@dashboard/app';
-
 // components
 import Label from '../components/label';
 import Iconify from '../components/iconify';
@@ -37,7 +35,9 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
-import { FederalUsers, TotalFederalSalary, minimumFederalSalary, averageFederalSalary, highestFederalSalary } from '../_mock/user';
+
+import { StateUsers, TotalFederalSalary, minimumFederalSalary, averageFederalSalary, highestFederalSalary } from '../_mock/user';
+
 
 // ----------------------------------------------------------------------
 
@@ -95,7 +95,7 @@ export default function UserPage() {
 
   const [filterName, setFilterName] = useState('');
 
-  const [rowsPerPage, setRowsPerPage] = useState(FederalUsers.length);
+  const [rowsPerPage, setRowsPerPage] = useState(StateUsers.length);
 
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
@@ -113,7 +113,7 @@ export default function UserPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = FederalUsers.map((n) => n.name);
+      const newSelecteds = StateUsers.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -149,44 +149,31 @@ export default function UserPage() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - FederalUsers.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - StateUsers.length) : 0;
 
-  const filteredUsers = applySortFilter(FederalUsers, getComparator(order, orderBy), filterName);
+  const filteredUsers = applySortFilter(StateUsers, getComparator(order, orderBy), filterName);
   // const filteredUsers = USERLIST;
 
   const isNotFound = !filteredUsers.length && !!filterName;
 
-
-  // cosnt [average , setAverage] = useState(0)
-
-
-
   return (
     <>
-
-
-
       <Helmet>
         <title> User | Minimal UI </title>
       </Helmet>
-
-
-
-
-
-
 
       <Container>
 
 
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Federal
+            State
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Entry
           </Button>
         </Stack>
+
 
 
         <Grid mb={5} container spacing={3}>
@@ -212,8 +199,6 @@ export default function UserPage() {
         </Grid>
 
 
-
-
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
@@ -224,7 +209,7 @@ export default function UserPage() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={FederalUsers.length}
+                  rowCount={StateUsers.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -306,7 +291,7 @@ export default function UserPage() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={FederalUsers.length}
+            count={StateUsers.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -343,8 +328,6 @@ export default function UserPage() {
           Delete
         </MenuItem>
       </Popover>
-
-
     </>
   );
 }

@@ -20,11 +20,36 @@ ThemeProvider.propTypes = {
 export default function ThemeProvider({ children }) {
   const themeOptions = useMemo(
     () => ({
-      palette,
+      // palette,
+      
+      
+      palette: {
+        mode: 'dark',
+        primary: {
+          main: '#90caf9', // Update with your primary color
+        },
+        secondary: {
+          main: '#f48fb1', // Update with your secondary color
+        },
+        // Add any additional palette colors you want to customize
+        // For example:
+        background: {
+          // paper: '#121212',
+          paper: '#222',
+          default: '#111',
+        },
+      },
+ 
+      
       shape: { borderRadius: 6 },
       typography,
       shadows: shadows(),
       customShadows: customShadows(),
+
+
+      
+
+
     }),
     []
   );
