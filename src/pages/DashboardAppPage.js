@@ -32,7 +32,7 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Dashboard </title>
       </Helmet>
 
       <Container maxWidth="xl">
@@ -75,7 +75,7 @@ export default function DashboardAppPage() {
             <AppWidgetSummary title="Average Salary" total={averageFederalSalary} color="warning" icon={<PaymentsIcon />} />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={12} lg={12}>
 
             <AppWebsiteVisits
               title="Website Visits"
@@ -96,8 +96,8 @@ export default function DashboardAppPage() {
               chartData={[
                 {
                   name: 'Team A',
-                  type: 'column',
-                  fill: 'solid',
+                  type: 'area',
+                  fill: 'gradient',
                   data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
                 },
                 {
@@ -108,31 +108,13 @@ export default function DashboardAppPage() {
                 },
                 {
                   name: 'Team C',
-                  type: 'line',
-                  fill: 'solid',
+                  type: 'area',
+                  fill: 'gradient',
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                 },
               ]}
             />
 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits
-              title="Current Visits"
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
-              ]}
-              chartColors={[
-                theme.palette.primary.main,
-                theme.palette.info.main,
-                theme.palette.warning.main,
-                theme.palette.error.main,
-              ]}
-            />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>

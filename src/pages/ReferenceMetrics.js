@@ -10,7 +10,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 // components
 import Iconify from '../components/iconify';
+
 // sections
+
 import {
   AppTasks,
   AppNewsUpdate,
@@ -21,6 +23,7 @@ import {
   AppWidgetSummary,
   AppCurrentSubject,
   AppConversionRates,
+  StackedBar
 } from '../sections/@dashboard/app';
 import { FederalUsers, TotalFederalSalary, minimumFederalSalary, averageFederalSalary, highestFederalSalary, totalStateSalary } from '../_mock/user';
 
@@ -33,7 +36,7 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        {/* <title> Metrics | Dashboard </title> */}
       </Helmet>
 
       <Container maxWidth="xl" sx={{ mb: 10 }}>
@@ -45,7 +48,7 @@ export default function DashboardAppPage() {
         <Grid container spacing={3}>
 
 
-          <Grid item xs={12} md={6} lg={12}>
+          <Grid item xs={12} md={12} lg={12}>
             <AppConversionRates
               title="Average Salary of Appointees"
               subheader="(+15%) than last year"
@@ -90,91 +93,6 @@ export default function DashboardAppPage() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Doctor</Typography>
-              </AccordionSummary>
-              <AccordionDetails lg={12} >
-
-                <Grid container spacing={3}>
-
-
-                  <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="State Salaries to Salary of Senator"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
-                      chartData={[
-                        { label: 'Sum of Salaries of State', value: totalStateSalary },
-                        { label: 'Salary of Senator', value: 18000000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
-                      ]}
-                      chartColors={[
-                        theme.palette.primary.main,
-                        theme.palette.info.main,
-                        theme.palette.warning.main,
-                        theme.palette.error.main,
-                      ]}
-                    />
-                  </Grid>
-
-
-                  <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="Rep member to State Civil Servant"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
-                      chartData={[
-                        { label: 'Salary of Representative Member', value: 5000000 },
-                        { label: 'Salary of state civil servant', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
-                      ]}
-                      chartColors={[
-                        theme.palette.primary.main,
-                        theme.palette.info.main,
-                        theme.palette.warning.main,
-                        theme.palette.error.main,
-                      ]}
-                    />
-                  </Grid>
-
-
-                  <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="Federal civil servant to minimum wage"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
-                      chartData={[
-                        { label: 'Salary of a federal civil servant', value: 60000 },
-                        { label: 'Minimum wage', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
-                      ]}
-                      chartColors={[
-                        theme.palette.primary.main,
-                        theme.palette.info.main,
-                        theme.palette.warning.main,
-                        theme.palette.error.main,
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-
-              </AccordionDetails>
-            </Accordion>
-
-          </Grid>
-
-
-
-          <Grid item xs={12} md={12} lg={12}>
-
-            <Accordion >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
                 <Typography>State</Typography>
               </AccordionSummary>
               <AccordionDetails lg={12} >
@@ -183,7 +101,7 @@ export default function DashboardAppPage() {
 
 
                   <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
+                    {/* <AppCurrentVisits
                       title="State Salaries to Salary of Senator"
                       type="donut"
                       // subheader="Sum of State to Senator"
@@ -199,24 +117,132 @@ export default function DashboardAppPage() {
                         theme.palette.warning.main,
                         theme.palette.error.main,
                       ]}
+                    /> */}
+
+                    <StackedBar
+                      title="State Salaries to Salary of Senator"
+                      // subheader="(+15%) than last year"
+
+                      chartData={[
+                        { name: 'Sum of Salaries of State', data: [2000] },
+                        { name: 'Salary of Senator', data: [4000] },
+
+                      ]}
+                      chartColors={[
+                        theme.palette.primary.main,
+                        // theme.palette.info.main,
+                        theme.palette.warning.main,
+                      ]}
                     />
                   </Grid>
 
 
                   <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
+
+
+
+                    <StackedBar
                       title="Rep member to State Civil Servant"
+                      // subheader="(+15%) than last year"
+
+                      chartData={[
+                        { name: 'Representative Member', data: [5000000] },
+                        { name: 'State Civil Servant', data: [20000] },
+
+                      ]}
+                      chartColors={[
+                        theme.palette.primary.main,
+                        // theme.palette.info.main,
+                        theme.palette.warning.main,
+                      ]}
+                    />
+                  </Grid>
+
+
+                  <Grid item xs={12} md={6} lg={4}>
+
+
+
+
+                    <StackedBar
+                      title="State Salaries to Budget Allocation of State"
+                      // subheader="(+15%) than last year"
+
+                      chartData={[
+                        { name: 'State Salaries', data: [totalStateSalary] },
+                        { name: 'Budget Allocation of State', data: [3000000000] },
+
+                      ]}
+                      chartColors={[
+                        theme.palette.primary.main,
+                        // theme.palette.info.main,
+                        theme.palette.warning.main,
+                      ]}
+                    />
+                  </Grid>
+
+                </Grid>
+
+              </AccordionDetails>
+            </Accordion>
+
+          </Grid>
+
+
+
+          <Grid item xs={12} md={12} lg={12}>
+
+            <Accordion >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Federal</Typography>
+              </AccordionSummary>
+              <AccordionDetails lg={12} >
+
+                <Grid container spacing={3}>
+
+
+                  <Grid item xs={12} md={6} lg={4}>
+
+                    <AppCurrentVisits
+                      title="National debt to Federal Salaries"
                       type="donut"
                       // subheader="Sum of State to Senator"
                       chartData={[
-                        { label: 'Salary of Representative Member', value: 5000000 },
-                        { label: 'Salary of state civil servant', value: 20000 },
+                        { label: 'Salary of Federal', value: TotalFederalSalary },
+                        { label: 'National debt', value: 17000000000 },
                         // { label: 'Europe', value: 1443 },
                         // { label: 'Africa', value: 4443 },
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
-                        theme.palette.info.main,
+                        // theme.palette.info.main,
+                        theme.palette.warning.main,
+                        theme.palette.error.main,
+                      ]}
+                    />
+                  </Grid>
+
+
+                  <Grid item xs={12} md={6} lg={4}>
+
+
+                    <AppCurrentVisits
+                      title="Federal Civil Servant to Councillor"
+                      type="donut"
+                      // subheader="Sum of State to Senator"
+                      chartData={[
+                        { label: 'Federal Civil Servant', value: 60000 },
+                        { label: 'Councillor', value: 5340000 },
+                        // { label: 'Europe', value: 1443 },
+                        // { label: 'Africa', value: 4443 },
+                      ]}
+                      chartColors={[
+                        theme.palette.primary.main,
+                        // theme.palette.info.main,
                         theme.palette.warning.main,
                         theme.palette.error.main,
                       ]}
@@ -237,7 +263,7 @@ export default function DashboardAppPage() {
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
-                        theme.palette.info.main,
+                        // theme.palette.info.main,
                         theme.palette.warning.main,
                         theme.palette.error.main,
                       ]}
@@ -260,7 +286,7 @@ export default function DashboardAppPage() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Senator</Typography>
+                <Typography>Appointees</Typography>
               </AccordionSummary>
               <AccordionDetails lg={12} >
 
@@ -268,73 +294,56 @@ export default function DashboardAppPage() {
 
 
                   <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="State Salaries to Salary of Senator"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
+
+
+
+                    <StackedBar
+                      title="Cost of National Election to Appointees Salaries"
+                      // subheader="(+15%) than last year"
+
                       chartData={[
-                        { label: 'Sum of Salaries of State', value: totalStateSalary },
-                        { label: 'Salary of Senator', value: 18000000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
+                        { name: 'Cost of National Election', data: [1500000000] },
+                        { name: 'Appointees Salaries', data: [1151688000] },
+
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
-                        theme.palette.info.main,
+                        // theme.palette.info.main,
                         theme.palette.warning.main,
-                        theme.palette.error.main,
                       ]}
                     />
                   </Grid>
 
 
                   <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="Rep member to State Civil Servant"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
+
+                    <StackedBar
+                      title="Federal Appointees to Nigerian Forces"
+                      // subheader="(+15%) than last year"
+
                       chartData={[
-                        { label: 'Salary of Representative Member', value: 5000000 },
-                        { label: 'Salary of state civil servant', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
+                        { name: 'Federal Appointees', data: [11540000] },
+                        { name: 'Nigerian Forces', data: [250000] },
+
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
-                        theme.palette.info.main,
+                        // theme.palette.info.main,
                         theme.palette.warning.main,
-                        theme.palette.error.main,
                       ]}
                     />
+
+
                   </Grid>
 
 
-                  <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="Federal civil servant to minimum wage"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
-                      chartData={[
-                        { label: 'Salary of a federal civil servant', value: 60000 },
-                        { label: 'Minimum wage', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
-                      ]}
-                      chartColors={[
-                        theme.palette.primary.main,
-                        theme.palette.info.main,
-                        theme.palette.warning.main,
-                        theme.palette.error.main,
-                      ]}
-                    />
-                  </Grid>
+
                 </Grid>
 
               </AccordionDetails>
             </Accordion>
 
           </Grid>
-
 
 
           <Grid item xs={12} md={12} lg={12}>
@@ -365,7 +374,7 @@ export default function DashboardAppPage() {
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
-                        theme.palette.info.main,
+                        // theme.palette.info.main,
                         theme.palette.warning.main,
                         theme.palette.error.main,
                       ]}
@@ -374,45 +383,28 @@ export default function DashboardAppPage() {
 
 
                   <Grid item xs={12} md={6} lg={4}>
+
+
                     <AppCurrentVisits
-                      title="Rep member to State Civil Servant"
+                      title="Federal Appointees to Nigerian Armed Forces"
                       type="donut"
                       // subheader="Sum of State to Senator"
                       chartData={[
-                        { label: 'Salary of Representative Member', value: 5000000 },
-                        { label: 'Salary of state civil servant', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
+                        { label: 'Federal Appointees', value: 11540000 },
+                        { label: 'Nigerian Armed Forces', value: 250000 },
+
                       ]}
                       chartColors={[
                         theme.palette.primary.main,
                         theme.palette.info.main,
-                        theme.palette.warning.main,
+                        theme.palette.success.main,
                         theme.palette.error.main,
                       ]}
                     />
                   </Grid>
 
 
-                  <Grid item xs={12} md={6} lg={4}>
-                    <AppCurrentVisits
-                      title="Federal civil servant to minimum wage"
-                      type="donut"
-                      // subheader="Sum of State to Senator"
-                      chartData={[
-                        { label: 'Salary of a federal civil servant', value: 60000 },
-                        { label: 'Minimum wage', value: 20000 },
-                        // { label: 'Europe', value: 1443 },
-                        // { label: 'Africa', value: 4443 },
-                      ]}
-                      chartColors={[
-                        theme.palette.primary.main,
-                        theme.palette.info.main,
-                        theme.palette.warning.main,
-                        theme.palette.error.main,
-                      ]}
-                    />
-                  </Grid>
+
                 </Grid>
 
               </AccordionDetails>

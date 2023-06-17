@@ -77,31 +77,45 @@ export default function Nav({ openNav, onCloseNav }) {
 
       <NavSection data={navConfig} />
 
-      <Box sx={{ flexGrow: 1 }} />
+      {/* <Box sx={{ flexGrow: 1 }} /> */}
 
-      {/* <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
+      <Box sx={{ px: 2.5, pb: 0, mt: 9 }}>
         <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
           <Box
             component="img"
-            src="/akal/assets/illustrations/illustration_avatar.png"
-            sx={{ width: 100, position: 'absolute', top: -50 }}
+            src="/akal/assets/illustrations/illustration_avatar.jpg"
+            sx={{ width: 100, position: 'absolute', top: -50, borderRadius: "50%" }}
           />
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography gutterBottom variant="h6">
-              Get more?
+              🚀 Boost Your Sales
             </Typography>
-
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               From only $69
             </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              +923378058628
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              mehdiraza1232016@gmail.com
+            </Typography>
+
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              or
+            </Typography>
+
+
+            <Button color="success" href="https://www.fiverr.com/mehdiraza2000" target="_blank" variant="contained">
+              Order Now on Fiverr
+            </Button>
+
           </Box>
 
-          <Button href="https://material-ui.com/store/items/minimal-dashboard/" target="_blank" variant="contained">
-            Upgrade to Pro
-          </Button>
+
+
         </Stack>
-      </Box> */}
+      </Box>
 
 
     </Scrollbar>
